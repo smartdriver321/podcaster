@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
-import LeftSidebar from '@/components/ui/shared/LeftSidebar'
+import LeftSidebar from '@/components/shared/LeftSidebar'
+import RightSidebar from '@/components/shared/RightSidebar'
 
 export default function HomeLayout({
 	children,
@@ -25,7 +26,7 @@ export default function HomeLayout({
 						<div className='flex flex-col md:pb-14'>{children}</div>
 					</div>
 				</section>
-				RightSidebar
+				<RightSidebar />
 			</main>
 		</div>
 	)
