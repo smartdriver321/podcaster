@@ -192,7 +192,6 @@ export default function CreatePodcastPage() {
 								) : (
 									'Submit & Publish Podcast'
 								)}
-								Submitting
 							</Button>
 						</div>
 					</div>
