@@ -155,6 +155,7 @@ export default function CreatePodcastPage() {
 								type='submit'
 								className='text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1'
 							>
+<<<<<<< HEAD
 								{isSubmitting ? (
 									<>
 										Submitting
@@ -163,6 +164,9 @@ export default function CreatePodcastPage() {
 								) : (
 									'Submit & Publish Podcast'
 								)}
+=======
+								Submitting
+>>>>>>> 0a3f39b7b617fcb2ead7c5ea091966a6bf418c8e
 							</Button>
 						</div>
 					</div>
