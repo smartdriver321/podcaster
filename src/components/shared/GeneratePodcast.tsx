@@ -18,12 +18,12 @@ const useGeneratePodcast = ({
 	setAudioStorageId,
 }: GeneratePodcastProps) => {
 	const [isGenerating, setIsGenerating] = useState(false)
+
 	const { toast } = useToast()
+	const getPodcastAudio = useAction(api.openai.generateAudioAction)
 
 	const generateUploadUrl = useMutation(api.files.generateUploadUrl)
 	const { startUpload } = useUploadFiles(generateUploadUrl)
-
-	const getPodcastAudio = useAction(api.openai.generateAudioAction)
 
 	const getAudioUrl = useMutation(api.podcasts.getUrl)
 
@@ -35,6 +35,7 @@ const useGeneratePodcast = ({
 			toast({
 				title: 'Please provide a voiceType to generate a podcast',
 			})
+
 			return setIsGenerating(false)
 		}
 

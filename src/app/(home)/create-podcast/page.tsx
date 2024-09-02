@@ -31,6 +31,7 @@ import {
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { Loader } from 'lucide-react'
+import { Id } from '../../../../convex/_generated/dataModel'
 
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx']
 
@@ -40,7 +41,21 @@ const formSchema = z.object({
 })
 
 export default function CreatePodcastPage() {
+	const [imagePrompt, setImagePrompt] = useState('')
+	const [imageUrl, setImageUrl] = useState('')
+	const [imageStorageId, setImageStorageId] = useState<Id<'_storage'> | null>(
+		null
+	)
+
+	const [audioUrl, setAudioUrl] = useState('')
+	const [audioDuration, setAudioDuration] = useState(0)
+	const [audioStorageId, setAudioStorageId] = useState<Id<'_storage'> | null>(
+		null
+	)
+
 	const [voiceType, setVoiceType] = useState<string | null>(null)
+	const [voicePrompt, setVoicePrompt] = useState('')
+
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	const router = useRouter()
@@ -146,16 +161,29 @@ export default function CreatePodcastPage() {
 					</div>
 
 					<div className='flex flex-col pt-10'>
-						<GeneratePodcast />
+						<GeneratePodcast
+							setAudioStorageId={setAudioStorageId}
+							setAudio={setAudioUrl}
+							voiceType={voiceType!}
+							audio={audioUrl}
+							voicePrompt={voicePrompt}
+							setVoicePrompt={setVoicePrompt}
+							setAudioDuration={setAudioDuration}
+						/>
 
-						<GenerateThumbnail />
+						<GenerateThumbnail
+							setImage={setImageUrl}
+							setImageStorageId={setImageStorageId}
+							image={imageUrl}
+							imagePrompt={imagePrompt}
+							setImagePrompt={setImagePrompt}
+						/>
 
 						<div className='mt-10 w-full'>
 							<Button
 								type='submit'
 								className='text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1'
 							>
-<<<<<<< HEAD
 								{isSubmitting ? (
 									<>
 										Submitting
@@ -164,9 +192,7 @@ export default function CreatePodcastPage() {
 								) : (
 									'Submit & Publish Podcast'
 								)}
-=======
 								Submitting
->>>>>>> 0a3f39b7b617fcb2ead7c5ea091966a6bf418c8e
 							</Button>
 						</div>
 					</div>
