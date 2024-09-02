@@ -29,6 +29,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
+import { Loader } from 'lucide-react'
 
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx']
 
@@ -146,6 +148,15 @@ export default function CreatePodcastPage() {
 						<GeneratePodcast />
 
 						<GenerateThumbnail />
+
+						<div className='mt-10 w-full'>
+							<Button
+								type='submit'
+								className='text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1'
+							>
+								Submitting
+							</Button>
+						</div>
 					</div>
 				</form>
 			</Form>
