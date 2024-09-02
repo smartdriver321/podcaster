@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { cn } from '@/lib/utils'
 import { useToast } from '@/hooks/use-toast'
+import GeneratePodcast from '@/components/shared/GeneratePodcast'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -138,6 +139,10 @@ export default function CreatePodcastPage() {
 								</FormItem>
 							)}
 						/>
+					</div>
+
+					<div className='flex flex-col pt-10'>
+						<GeneratePodcast />
 					</div>
 				</form>
 			</Form>
