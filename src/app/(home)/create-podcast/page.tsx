@@ -29,6 +29,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
+import { Loader } from 'lucide-react'
 
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx']
 
@@ -39,6 +41,7 @@ const formSchema = z.object({
 
 export default function CreatePodcastPage() {
 	const [voiceType, setVoiceType] = useState<string | null>(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	const router = useRouter()
 
@@ -146,6 +149,22 @@ export default function CreatePodcastPage() {
 						<GeneratePodcast />
 
 						<GenerateThumbnail />
+
+						<div className='mt-10 w-full'>
+							<Button
+								type='submit'
+								className='text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1'
+							>
+								{isSubmitting ? (
+									<>
+										Submitting
+										<Loader size={20} className='animate-spin ml-2' />
+									</>
+								) : (
+									'Submit & Publish Podcast'
+								)}
+							</Button>
+						</div>
 					</div>
 				</form>
 			</Form>
